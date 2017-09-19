@@ -55,6 +55,9 @@ var coordinates = [{x: 250}, {x: 350}, {x: 450}, {x: 550}, {x: 650}];
 var heroCollection = ['herosc', 'heroy', 'herodr', 'herom', 'heroc'];
     
 var spawnAllowed = true;
+
+var i;
+var rand = 300;
     
 function create() {
     
@@ -84,8 +87,7 @@ function create() {
     
     obstacles = game.add.group();
     obstacles.enableBody = true;
-    var int = randomTime(500, 3000);
-    setInterval(spawnOb, int);
+    randSpawn();
 //    var obstacle = obstacles.create(370, -25, 'obstacle');
 //    obstacle.body.gravity.y = 50;
 //    createNewOb();
@@ -130,6 +132,17 @@ function spawnOb() {
     var obstacle = obstacles.create(370, -25, 'obstacle');
     obstacle.body.gravity.y = 50;
 }
+function randSpawn() {
+//    var int = randomTime(10000, 50000);
+//    setInterval(spawnOb, int);
+//    int = 
+    spawnOb();
+    rand = Math.round(Math.random()*(3000-500))+500;
+    clearInterval(i);
+    i = setInterval(randSpawn, rand);
+}
+    
+i = setInterval(randSpawn, rand);
     
 function update() {
     
@@ -139,6 +152,8 @@ function update() {
     game.physics.arcade.overlap(player, obstacles, playerKill, null, this);
     
     player.body.velocity.x = 0;
+    
+    
     
     
 }
