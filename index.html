@@ -84,8 +84,11 @@ function create() {
     
     obstacles = game.add.group();
     obstacles.enableBody = true;
-    var obstacle = obstacles.create(370, 0, 'obstacle');
+    var obstacle = obstacles.create(370, -25, 'obstacle');
     obstacle.body.gravity.y = 50;
+//    createNewOb();
+    
+    
     
     scoreText = game.add.text(250, 16, 'Score: 0', { fontSize: '32px', fill: '#000'});
     
@@ -108,13 +111,26 @@ function create() {
     
 }
     
+function createNewOb() {
+    if(spawnAllowed) {
+        var obstacle = obstacles.create(370, -25, 'obstacle');
+        obstacle.body.gravity.y = 50;
+        queueOb(game.rnd.integerInRange(2500, 5000));
+    }
+}
+function queueOb(time) {
+    game.add(time, createNewOb);
+}
+    
 function update() {
+    
     
     game.physics.arcade.overlap(player, orbs, collectOrb, null, this);
     
     game.physics.arcade.overlap(player, obstacles, playerKill, null, this);
     
     player.body.velocity.x = 0;
+    
     
 }
     
