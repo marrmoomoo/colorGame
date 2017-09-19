@@ -129,7 +129,7 @@ function randomTime(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 function spawnOb() {
-    var obstacle = obstacles.create(370, -25, 'obstacle');
+    var obstacle = obstacles.create(370, -250, 'obstacle');
     obstacle.body.gravity.y = 50;
 }
 function randSpawn() {
