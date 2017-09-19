@@ -84,8 +84,10 @@ function create() {
     
     obstacles = game.add.group();
     obstacles.enableBody = true;
-    var obstacle = obstacles.create(370, -25, 'obstacle');
-    obstacle.body.gravity.y = 50;
+    var int = randomTime(500, 3000);
+    setInterval(spawnOb, int);
+//    var obstacle = obstacles.create(370, -25, 'obstacle');
+//    obstacle.body.gravity.y = 50;
 //    createNewOb();
     
     
@@ -111,15 +113,22 @@ function create() {
     
 }
     
-function createNewOb() {
-    if(spawnAllowed) {
-        var obstacle = obstacles.create(370, -25, 'obstacle');
-        obstacle.body.gravity.y = 50;
-        queueOb(game.rnd.integerInRange(2500, 5000));
-    }
+//function createNewOb() {
+//    if(spawnAllowed) {
+//        var obstacle = obstacles.create(370, -25, 'obstacle');
+//        obstacle.body.gravity.y = 50;
+//        queueOb(game.rnd.integerInRange(2500, 5000));
+//    }
+//}
+//function queueOb(time) {
+//    game.add(time, createNewOb);
+//}
+function randomTime(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
 }
-function queueOb(time) {
-    game.add(time, createNewOb);
+function spawnOb() {
+    var obstacle = obstacles.create(370, -25, 'obstacle');
+    obstacle.body.gravity.y = 50;
 }
     
 function update() {
@@ -146,6 +155,7 @@ function collectOrb (player, orb) {
 function playerKill (player, obstacle) {
     
     player.kill();
+    spawnAllowed = false;
 
 }
     
