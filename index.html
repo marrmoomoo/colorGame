@@ -1,0 +1,139 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+    <title>Color Game</title>
+    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var game = new Phaser.Game(1000, 800, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+function preload() {
+
+    game.load.spritesheet('bg', 'assets/fallingStarsSheet.jpg', 212, 160);
+    game.load.image('sclane', 'assets/laneSpaceCadet.png');
+    game.load.image('ylane', 'assets/laneYellow.png');
+    game.load.image('drlane', 'assets/laneDarkRaspberry.png');
+    game.load.image('mlane', 'assets/laneMalachite.png');
+    game.load.image('clane', 'assets/laneCrimson.png');
+    game.load.image('herosc', 'assets/heroSpaceCadet.png');
+    game.load.image('heroy', 'assets/heroYellow.png');
+    game.load.image('herodr', 'assets/heroDarkRaspberry.png');
+    game.load.image('herom', 'assets/heroMalachite.png');
+    game.load.image('heroc', 'assets/heroCrimson.png');
+    game.load.image('orb', 'assets/colorOrb.png');
+    game.load.image('obstacle', 'assets/obstacleTemp.png');
+
+}
+
+var bg;
+var player;
+var laneSC;
+var laneY;
+var laneDR;
+var laneM;
+var laneC;
+var orbs;
+var obstacles;
+    
+var cursors;
+    
+var score = 0;
+var scoreText;
+    
+var n = 2;
+var coordinates = [{x: 250}, {x: 350}, {x: 450}, {x: 550}, {x: 650}];
+    
+var heroCollection = ['herosc', 'heroy', 'herodr', 'herom', 'heroc'];
+    
+var spawnAllowed = true;
+    
+function create() {
+    
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    
+    bg = game.add.sprite(0, 0, 'bg');
+    bg.scale.setTo(5, 5);
+    bg.animations.add('scroll');
+    bg.animations.play('scroll', 15, true);
+    
+    game.add.sprite(250, -200, 'clane');
+    game.add.sprite(350, -200, 'drlane');
+    game.add.sprite(450, -200, 'ylane');
+    game.add.sprite(550, -200, 'mlane');
+    game.add.sprite(650, -200, 'sclane');
+    
+    player = game.add.sprite(450, 670, 'heroy');
+    
+    game.physics.arcade.enable(player);
+    
+    player.body.collideWorldBounds = true;
+    
+    orbs = game.add.group();
+    orbs.enableBody = true;
+    var orb = orbs.create(485, 50, 'orb');
+    orb.body.gravity.y = 300;
+    
+    obstacles = game.add.group();
+    obstacles.enableBody = true;
+    var obstacle = obstacles.create(370, 0, 'obstacle');
+    obstacle.body.gravity.y = 50;
+    
+    scoreText = game.add.text(250, 16, 'Score: 0', { fontSize: '32px', fill: '#000'});
+    
+    cursors = game.input.keyboard.createCursorKeys();
+    cursors.left.onDown.add(goLeft,this);
+    cursors.right.onDown.add(goRight,this);
+    
+    function goLeft(){
+        if (player.position.x > 250){
+            n -= 1;
+            player.position.x = coordinates[n].x;
+        }
+    }
+    function goRight(){
+        if (player.position.x < 650){
+            n += 1;
+            player.position.x = coordinates[n].x;
+        }
+    }
+    
+}
+    
+function update() {
+    
+    game.physics.arcade.overlap(player, orbs, collectOrb, null, this);
+    
+    game.physics.arcade.overlap(player, obstacles, playerKill, null, this);
+    
+    player.body.velocity.x = 0;
+    
+}
+    
+function collectOrb (player, orb) {
+    
+    orb.kill();
+    score += 100;
+    scoreText.text = 'Score: ' + score;
+    var random = Math.floor(Math.random() * 5);
+    player.loadTexture(heroCollection[random]);
+    
+}
+function playerKill (player, obstacle) {
+    
+    player.kill();
+
+}
+    
+</script>
+    
+</body>
+</html>
