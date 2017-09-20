@@ -275,6 +275,14 @@ function update() {
     
     game.physics.arcade.overlap(player, laneC, laneCScoreModifier, null, this);
     
+    game.physics.arcade.overlap(player, laneDR, laneDRScoreModifier, null, this);
+    
+    game.physics.arcade.overlap(player, laneY, laneYScoreModifier, null, this);
+    
+    game.physics.arcade.overlap(player, laneM, laneMScoreModifier, null, this);
+    
+    game.physics.arcade.overlap(player, laneSC, laneSCScoreModifier, null, this);
+    
     player.body.velocity.x = 0;
     
     
@@ -299,6 +307,42 @@ function playerKill (player, obstacle) {
 }
 function laneCScoreModifier (player, lane) {
     if (player.key == 'heroc') {
+        score += 1;
+        scoreText.text = 'Score: ' + score;
+    } else {
+        score--;
+        scoreText.text = 'Score: ' + score;
+    }
+}
+function laneDRScoreModifier (player, lane) {
+    if (player.key == 'herodr') {
+        score += 1;
+        scoreText.text = 'Score: ' + score;
+    } else {
+        score--;
+        scoreText.text = 'Score: ' + score;
+    }
+}
+function laneYScoreModifier (player, lane) {
+    if (player.key == 'heroy') {
+        score += 1;
+        scoreText.text = 'Score: ' + score;
+    } else {
+        score--;
+        scoreText.text = 'Score: ' + score;
+    }
+}
+function laneMScoreModifier (player, lane) {
+    if (player.key == 'herom') {
+        score += 1;
+        scoreText.text = 'Score: ' + score;
+    } else {
+        score--;
+        scoreText.text = 'Score: ' + score;
+    }
+}
+function laneSCScoreModifier (player, lane) {
+    if (player.key == 'herosc') {
         score += 1;
         scoreText.text = 'Score: ' + score;
     } else {
