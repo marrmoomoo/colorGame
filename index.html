@@ -19,6 +19,7 @@ var game = new Phaser.Game(1000, 800, Phaser.AUTO, '', { preload: preload, creat
 function preload() {
 
     game.load.spritesheet('bg', 'assets/fallingStarsSheet.jpg', 212, 160);
+    game.load.image('hd', 'assets/hitDetection.png');
     game.load.image('sclane', 'assets/laneSpaceCadet.png');
     game.load.image('ylane', 'assets/laneYellow.png');
     game.load.image('drlane', 'assets/laneDarkRaspberry.png');
@@ -48,6 +49,7 @@ var cursors;
     
 var score = 0;
 var scoreText;
+var timer;
     
 var n = 2;
 var coordinates = [{x: 250}, {x: 350}, {x: 450}, {x: 550}, {x: 650}];
@@ -86,11 +88,16 @@ function create() {
     bg.animations.add('scroll');
     bg.animations.play('scroll', 15, true);
     
-    game.add.sprite(250, -200, 'clane');
-    game.add.sprite(350, -200, 'drlane');
-    game.add.sprite(450, -200, 'ylane');
-    game.add.sprite(550, -200, 'mlane');
-    game.add.sprite(650, -200, 'sclane');
+    laneC = game.add.sprite(250, -200, 'clane');
+    game.physics.arcade.enable(laneC);
+    laneDR = game.add.sprite(350, -200, 'drlane');
+    game.physics.arcade.enable(laneDR);
+    laneY = game.add.sprite(450, -200, 'ylane');
+    game.physics.arcade.enable(laneY);
+    laneM = game.add.sprite(550, -200, 'mlane');
+    game.physics.arcade.enable(laneM);
+    laneSC = game.add.sprite(650, -200, 'sclane');
+    game.physics.arcade.enable(laneSC);
     
     player = game.add.sprite(450, 670, 'heroy');
     
@@ -100,13 +107,13 @@ function create() {
     
     orbs = game.add.group();
     orbs.enableBody = true;
-    randOrb1Spawn();
+//    randOrb1Spawn();
 //    var orb = orbs.create(485, 50, 'orb');
 //    orb.body.gravity.y = 300;
     
     obstacles = game.add.group();
     obstacles.enableBody = true;
-    randOb1Spawn();
+//    randOb1Spawn();
 //    var obstacle = obstacles.create(370, -25, 'obstacle');
 //    obstacle.body.gravity.y = 50;
 //    createNewOb();
@@ -266,6 +273,8 @@ function update() {
     
     game.physics.arcade.overlap(player, obstacles, playerKill, null, this);
     
+    game.physics.arcade.overlap(player, laneC, laneCScoreModifier, null, this);
+    
     player.body.velocity.x = 0;
     
     
@@ -276,7 +285,7 @@ function update() {
 function collectOrb (player, orb) {
     
     orb.kill();
-    score += 100;
+    score += 5000;
     scoreText.text = 'Score: ' + score;
     var random = Math.floor(Math.random() * 5);
     player.loadTexture(heroCollection[random]);
@@ -288,6 +297,17 @@ function playerKill (player, obstacle) {
     spawnAllowed = false;
 
 }
+function laneCScoreModifier (player, lane) {
+    if (player.key == 'heroc') {
+        score += 1;
+        scoreText.text = 'Score: ' + score;
+    } else {
+        score--;
+        scoreText.text = 'Score: ' + score;
+    }
+}
+
+
     
 </script>
     
