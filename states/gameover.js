@@ -6,6 +6,7 @@ GameOver.prototype = {
         this.optionCount = 1;
     },
     
+    
     addMenuOption: function(text, callback) {
         var optionStyle = { font: '30pt TheMinion', fill: 'white', align: 'left', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
         var txt = game.add.text(game.world.centerX, (this.optionCount * 80) + 300, text, optionStyle);
@@ -41,11 +42,13 @@ GameOver.prototype = {
     text.anchor.set(0.5);
     this.addMenuOption('Play Again', function (e) {
         score = 0;
+        n = 2;
       this.game.state.start("Game");
     });
     this.addMenuOption('Main Menu', function (e) {
         score = 0;
-      this.game.state.start("GameMenu");
+        n = 2;
+      this.game.state.start("Splash");
     })
   }
 };

@@ -9,6 +9,7 @@ var laneM;
 var laneC;
 var orbs;
 var obstacles;
+var obstacle;
     
 var cursors;
     
@@ -62,6 +63,7 @@ Game.prototype = {
         game.load.image('heroc', 'assets/images/heroCrimson.png');
         game.load.image('orb', 'assets/images/colorOrb.png');
         game.load.spritesheet('bomb', 'assets/images/bombs.png', 60, 60);
+        game.load.spritesheet('explosion', 'assets/images/explosionSheet.png')
 
     },
     
@@ -276,6 +278,21 @@ Game.prototype = {
         }   
         j5 = setInterval(randOrb5Spawn, randj5);
         
+//        function killSpawn() {
+//            if (player.key == 'orb') {
+//                clearInterval(i1);
+//                clearInterval(i2);
+//                clearInterval(i3);
+//                clearInterval(i4);
+//                clearInterval(i5);
+//                clearInterval(j1);
+//                clearInterval(j2);
+//                clearInterval(j3);
+//                clearInterval(j4);
+//                clearInterval(j5);
+//            }
+//        }
+        
         this.stage.disableVisibilityChange = false;
         
 //        if (player.kill()) {
@@ -317,6 +334,16 @@ Game.prototype = {
         function playerKill (player, obstacle) {
 
             player.kill();
+            clearInterval(i1);
+            clearInterval(i2);
+            clearInterval(i3);
+            clearInterval(i4);
+            clearInterval(i5);
+            clearInterval(j1);
+            clearInterval(j2);
+            clearInterval(j3);
+            clearInterval(j4);
+            clearInterval(j5);
             spawnAllowed = false;
             this.addMenuOption('OH NO! ->', function (e) {
                 this.game.state.start("GameOver");
