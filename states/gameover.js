@@ -36,12 +36,15 @@ GameOver.prototype = {
     game.add.sprite(0, 0, 'gameoverbg');
     var titleStyle = { font: 'bold 60pt TheMinion', fill: '#FDFFB5', align: 'center'};
     var text = game.add.text(game.world.centerX, 100, "Game Over", titleStyle);
+    var textS = game.add.text(120, 200, "Final Score: " + score, titleStyle);
     text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
     text.anchor.set(0.5);
     this.addMenuOption('Play Again', function (e) {
+        score = 0;
       this.game.state.start("Game");
     });
     this.addMenuOption('Main Menu', function (e) {
+        score = 0;
       this.game.state.start("GameMenu");
     })
   }

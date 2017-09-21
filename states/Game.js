@@ -360,7 +360,3 @@ Game.prototype = {
         }
     }
 };
-
-//if (!spawnAllowed) {
-//    game.state.start("gameover");
-//}
