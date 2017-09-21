@@ -1,4 +1,4 @@
-var Credits = function(game) {};
+var Credits = function (game) {};
 
 Credits.prototype = {
 
@@ -8,7 +8,7 @@ Credits.prototype = {
 
   },
 
-  addCredit: function(task, author) {
+  addCredit: function (task, author) {
     var authorStyle = { font: '40pt TheMinion', fill: 'white', align: 'center', stroke: 'rgba(0,0,0,0)', strokeThickness: 4};
     var taskStyle = { font: '30pt TheMinion', fill: 'white', align: 'center', stroke: 'rgba(0,0,0,0)', strokeThickness: 4};
     var authorText = game.add.text(game.world.centerX, 900, author, authorStyle);
@@ -19,12 +19,12 @@ Credits.prototype = {
     taskText.anchor.setTo(0.5);
     taskText.stroke = "rgba(0,0,0,0)";
     taskText.strokeThickness = 4;
-    game.add.tween(authorText).to( { y: -300 }, 20000, Phaser.Easing.Cubic.Out, true, this.creditCount * 10000);
-    game.add.tween(taskText).to( { y: -200 }, 20000, Phaser.Easing.Cubic.Out, true, this.creditCount * 10000);
-    this.creditCount ++;
+    game.add.tween(authorText).to({ y: -300 }, 20000, Phaser.Easing.Cubic.Out, true, this.creditCount * 10000);
+    game.add.tween(taskText).to({ y: -200 }, 20000, Phaser.Easing.Cubic.Out, true, this.creditCount * 10000);
+//    this.creditCount++;
   },
 
-  addMenuOption: function(text, callback) {
+  addMenuOption: function (text, callback) {
     var optionStyle = { font: '30pt TheMinion', fill: 'white', align: 'left', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
     var txt = game.add.text(10, (this.optionCount * 80) + 450, text, optionStyle);
 

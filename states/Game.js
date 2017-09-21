@@ -46,23 +46,51 @@ var randj5 = 900;
 
 Game.prototype = {
     preload: function () {
+        this.optionCount = 1;
 
-        game.load.spritesheet('bg', 'assets/fallingStarsSheet.jpg', 212, 160);
-        game.load.image('hd', 'assets/hitDetection.png');
-        game.load.image('sclane', 'assets/laneSpaceCadet.png');
-        game.load.image('ylane', 'assets/laneYellow.png');
-        game.load.image('drlane', 'assets/laneDarkRaspberry.png');
-        game.load.image('mlane', 'assets/laneMalachite.png');
-        game.load.image('clane', 'assets/laneCrimson.png');
-        game.load.image('herosc', 'assets/heroSpaceCadet.png');
-        game.load.image('heroy', 'assets/heroYellow.png');
-        game.load.image('herodr', 'assets/heroDarkRaspberry.png');
-        game.load.image('herom', 'assets/heroMalachite.png');
-        game.load.image('heroc', 'assets/heroCrimson.png');
-        game.load.image('orb', 'assets/colorOrb.png');
-        game.load.image('obstacle', 'assets/obstacleTemp.png');
+        game.load.spritesheet('bg', 'assets/images/fallingStarsSheet.jpg', 212, 160);
+        game.load.image('hd', 'assets/images/hitDetection.png');
+        game.load.image('sclane', 'assets/images/laneSpaceCadet.png');
+        game.load.image('ylane', 'assets/images/laneYellow.png');
+        game.load.image('drlane', 'assets/images/laneDarkRaspberry.png');
+        game.load.image('mlane', 'assets/images/laneMalachite.png');
+        game.load.image('clane', 'assets/images/laneCrimson.png');
+        game.load.image('herosc', 'assets/images/heroSpaceCadet.png');
+        game.load.image('heroy', 'assets/images/heroYellow.png');
+        game.load.image('herodr', 'assets/images/heroDarkRaspberry.png');
+        game.load.image('herom', 'assets/images/heroMalachite.png');
+        game.load.image('heroc', 'assets/images/heroCrimson.png');
+        game.load.image('orb', 'assets/images/colorOrb.png');
+        game.load.image('obstacle', 'assets/images/obstacleTemp.png');
 
     },
+    
+    addMenuOption: function(text, callback) {
+        var optionStyle = { font: '30pt TheMinion', fill: 'white', align: 'left', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
+        var txt = game.add.text(game.world.centerX, (this.optionCount * 80) + 200, text, optionStyle);
+        txt.anchor.setTo(0.5);
+        txt.stroke = "rgba(0,0,0,0";
+        txt.strokeThickness = 4;
+        var onOver = function (target) {
+            target.fill = "#FEFFD5";
+            target.stroke = "rgba(200,200,200,0.5)";
+            txt.useHandCursor = true;
+        };
+        var onOut = function (target) {
+            target.fill = "white";
+            target.stroke = "rgba(0,0,0,0)";
+            txt.useHandCursor = false;
+        };
+        //txt.useHandCursor = true;
+        txt.inputEnabled = true;
+        txt.events.onInputUp.add(callback, this);
+        txt.events.onInputOver.add(onOver, this);
+        txt.events.onInputOut.add(onOut, this);
+
+        this.optionCount ++;
+
+
+  },
     
     create: function () {
     
@@ -237,6 +265,8 @@ Game.prototype = {
             j5 = setInterval(randOrb5Spawn, randj5);
         }   
         j5 = setInterval(randOrb5Spawn, randj5);
+        
+        this.stage.disableVisibilityChange = false;
 
     },    
     

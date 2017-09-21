@@ -1,13 +1,18 @@
-var 
-    game = new Phaser.Game(1000, 800, Phaser.AUTO, 'game'), 
-    Main = function () {};
+var
+    game = new Phaser.Game(1000, 800, Phaser.AUTO, 'game'),
+    Main = function () {},
+    gameOptions = {
+        playSound: true,
+        playMusic: true
+    },
+    musicPlayer;
 
 Main.prototype = {
     
     preload: function () {
-        game.load.image('load', 'assets/loadScreen.png');
-        game.load.image('loading', 'assets/loading.png');
-        game.load.image('logo', 'assets/logo.png');
+        game.load.image('load', 'assets/images/loadScreen.png');
+        game.load.image('loading', 'assets/images/loading.png');
+        game.load.image('logo', 'assets/images/logo.png');
         game.load.script('polyfill', 'lib/polyfill.js');
         game.load.script('utils', 'lib/utils.js');
         game.load.script('splash', 'states/Splash.js');
