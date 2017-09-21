@@ -61,7 +61,7 @@ Game.prototype = {
         game.load.image('herom', 'assets/images/heroMalachite.png');
         game.load.image('heroc', 'assets/images/heroCrimson.png');
         game.load.image('orb', 'assets/images/colorOrb.png');
-        game.load.image('obstacle', 'assets/images/obstacleTemp.png');
+        game.load.spritesheet('bomb', 'assets/images/bombs.png', 60, 60);
 
     },
     
@@ -155,24 +155,34 @@ Game.prototype = {
             return Math.floor(Math.random() * (max - min) + min);
         }
         function spawnOb1() {
-            var obstacle = obstacles.create(270, -350, 'obstacle');
+            var obstacle = obstacles.create(270, -350, 'bomb');
             obstacle.body.gravity.y = 50;
+            obstacle.animations.add('scroll');
+            obstacle.animations.play('scroll', 15, true);
         }
         function spawnOb2() {
-            var obstacle = obstacles.create(370, -250, 'obstacle');
+            var obstacle = obstacles.create(370, -250, 'bomb');
             obstacle.body.gravity.y = 120;
+            obstacle.animations.add('scroll');
+            obstacle.animations.play('scroll', 15, true);
         }
         function spawnOb3() {
-            var obstacle = obstacles.create(470, -350, 'obstacle');
+            var obstacle = obstacles.create(470, -350, 'bomb');
             obstacle.body.gravity.y = 50;
+            obstacle.animations.add('scroll');
+            obstacle.animations.play('scroll', 15, true);
         }
         function spawnOb4() {
-            var obstacle = obstacles.create(570, -250, 'obstacle');
+            var obstacle = obstacles.create(570, -250, 'bomb');
             obstacle.body.gravity.y = 120;
+            obstacle.animations.add('scroll');
+            obstacle.animations.play('scroll', 15, true);
         }
         function spawnOb5() {
-            var obstacle = obstacles.create(670, -450, 'obstacle');
+            var obstacle = obstacles.create(670, -450, 'bomb');
             obstacle.body.gravity.y = 50;
+            obstacle.animations.add('scroll');
+            obstacle.animations.play('scroll', 15, true);
         }
         function spawnOrb1() {
             var orb = orbs.create(285, -250, 'orb');
