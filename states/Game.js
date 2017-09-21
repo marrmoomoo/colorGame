@@ -267,6 +267,12 @@ Game.prototype = {
         j5 = setInterval(randOrb5Spawn, randj5);
         
         this.stage.disableVisibilityChange = false;
+        
+//        if (player.kill()) {
+//            this.addMenuOption('Next ->', function (e) {
+//                this.game.state.start("GameOver");
+//            });
+//        }
 
     },    
     
@@ -302,6 +308,9 @@ Game.prototype = {
 
             player.kill();
             spawnAllowed = false;
+            this.addMenuOption('Next ->', function (e) {
+                this.game.state.start("GameOver");
+            });
 
         }
         function laneCScoreModifier (player, lane) {
@@ -352,6 +361,6 @@ Game.prototype = {
     }
 };
 
-if (!spawnAllowed) {
-    game.state.start("gameover");
-}
+//if (!spawnAllowed) {
+//    game.state.start("gameover");
+//}
