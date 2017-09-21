@@ -7,9 +7,13 @@ GameMenu.prototype = {
         startY: 260,
         startX: 30
     },
+    
+    preload: function () {
+        game.load.image('menu', 'assets/images/menubg.jpg')
+    },
   
     init: function () {
-        game.load.images('menu-bg', 'assets/menu-bg.jpg');
+//        game.load.images('menu-bg', 'assets/menu-bg.jpg');
         this.titleText = game.make.text(game.world.centerX, 100, "SPACE FACE COLOR EXPLOSION V", {
             font: 'bold 32pt TheMinion',
             fill: '#FDFFB5',
@@ -29,7 +33,8 @@ GameMenu.prototype = {
             music.play();
         }
         game.stage.disableVisibilityChange = true;
-        game.add.sprite(0, 0, 'menu-bg');
+        var men = game.add.sprite(0, 0, 'menu');
+        men.scale.setTo(2, 2);
         game.add.existing(this.titleText);
         
         this.addMenuOption('Start', function () {

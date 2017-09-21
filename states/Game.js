@@ -308,7 +308,7 @@ Game.prototype = {
 
             player.kill();
             spawnAllowed = false;
-            this.addMenuOption('Next ->', function (e) {
+            this.addMenuOption('OH NO! ->', function (e) {
                 this.game.state.start("GameOver");
             });
 

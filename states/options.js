@@ -8,7 +8,10 @@ Options.prototype = {
     startX: "center"
   },
 
-
+    loadBgm: function () {
+        game.load.audio('dangerous', 'assets/bgm/Dangerous.mp3');
+    },
+    
   init: function () {
     this.titleText = game.make.text(game.world.centerX, 100, "Options", {
       font: 'bold 60pt TheMinion',
@@ -23,17 +26,25 @@ Options.prototype = {
     var playSound = gameOptions.playSound,
         playMusic = gameOptions.playMusic;
 
-    game.add.sprite(0, 0, 'options-bg');
+    var opbg = game.add.sprite(0, 0, 'optionsbg');
+    opbg.scale.setTo(2, 2);
     game.add.existing(this.titleText);
     this.addMenuOption(playMusic ? 'Mute Music' : 'Play Music', function (target) {
-      playMusic = !playMusic;
-      target.text = playMusic ? 'Mute Music' : 'Play Music';
-      musicPlayer.volume = playMusic ? 1 : 0;
+        playMusic = !playMusic;
+        if (!playMusic) {
+            music.pause();
+        } else {
+            if (playMusic) {
+                music.resume();
+            }
+        }
+        target.text = playMusic ? 'Mute Music' : 'Play Music';
+        musicPlayer.volume = playMusic ? 1 : 0;
     });
-    this.addMenuOption(playSound ? 'Mute Sound' : 'Play Sound', function (target) {
-      playSound = !playSound;
-      target.text = playSound ? 'Mute Sound' : 'Play Sound';
-    });
+//    this.addMenuOption(playSound ? 'Mute Sound' : 'Play Sound', function (target) {
+//      playSound = !playSound;
+//      target.text = playSound ? 'Mute Sound' : 'Play Sound';
+//    });
     this.addMenuOption('<- Back', function () {
       game.state.start("GameMenu");
     });

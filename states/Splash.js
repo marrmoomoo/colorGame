@@ -19,9 +19,9 @@ Splash.prototype = {
     },
     
     loadImages: function () {
-        game.load.images('menu-bg', 'assets/images/menu-bg.jpg');
-        game.load.image('options-bg', 'assets/images/options-bg.jpg');
-        game.load.images('gameover-bg', 'assets/images/gameover-bg.jpg');
+//        game.load.images('menubg', 'assets/images/menubg.jpg');
+        game.load.image('optionsbg', 'assets/images/optionsbg.jpg');
+//        game.load.images('gameoverbg', 'assets/images/gameover-bg.jpg');
     },
     
     loadFonts: function () {
