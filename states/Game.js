@@ -10,6 +10,7 @@ var laneC;
 var orbs;
 var obstacles;
 var obstacle;
+var grav;
     
 var cursors;
     
@@ -355,7 +356,7 @@ Game.prototype = {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score--;
+                score -= 20;
                 scoreText.text = 'Score: ' + score;
             }
         }
@@ -364,7 +365,7 @@ Game.prototype = {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score--;
+                score -= 20;
                 scoreText.text = 'Score: ' + score;
             }
         }
@@ -373,7 +374,7 @@ Game.prototype = {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score--;
+                score -= 20;
                 scoreText.text = 'Score: ' + score;
             }
         }
@@ -382,7 +383,7 @@ Game.prototype = {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score--;
+                score -= 20;
                 scoreText.text = 'Score: ' + score;
             }
         }
@@ -391,7 +392,7 @@ Game.prototype = {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score--;
+                score -= 20;
                 scoreText.text = 'Score: ' + score;
             }
         }
