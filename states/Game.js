@@ -71,6 +71,7 @@ Game.prototype = {
         game.load.image('orb', 'assets/images/colorOrb.png');
         game.load.spritesheet('bomb', 'assets/images/bombs.png', 60, 60);
         game.load.spritesheet('explosion', 'assets/images/explostionSheet.png', 100, 100)
+        game.load.audio('splodesound', 'assets/bgm/Explosion.mp3');
 
     },
     
@@ -359,6 +360,8 @@ Game.prototype = {
         function playerKill (player, obstacle) {
 
             player.kill();
+            var splodeSound = game.sound.add('splodesound');
+            splodeSound.play();
             obstacle.body.gravity.y = 0;
             obstacle.body.velocity.y = 0;
             obstacle.position.x = obstacle.position.x - 20;
