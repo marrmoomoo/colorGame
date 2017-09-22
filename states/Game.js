@@ -70,7 +70,7 @@ Game.prototype = {
         game.load.image('heroc', 'assets/images/heroCrimson.png');
         game.load.image('orb', 'assets/images/colorOrb.png');
         game.load.spritesheet('bomb', 'assets/images/bombs.png', 60, 60);
-        game.load.spritesheet('explosion', 'assets/images/explosionSheet.png')
+        game.load.spritesheet('explosion', 'assets/images/explostionSheet.png', 100, 100)
 
     },
     
@@ -169,6 +169,14 @@ Game.prototype = {
             obstacle.body.gravity.y = grav;
             obstacle.animations.add('scroll');
             obstacle.animations.play('scroll', 15, true);
+            console.log(obstacle);
+            if (obstacle.alive == false) {
+                console.log(obstacle);
+                obstacle.loadTexture('explosion');
+                obstacle.animations.add('scroll');
+                obstacle.animations.play('scroll', 15, true);
+                console.log(obstacle);
+            }
         }
         function spawnOb2() {
             var obstacle = obstacles.create(370, -250, 'bomb');
@@ -351,6 +359,14 @@ Game.prototype = {
         function playerKill (player, obstacle) {
 
             player.kill();
+            obstacle.body.gravity.y = 0;
+            obstacle.body.velocity.y = 0;
+            obstacle.position.x = obstacle.position.x - 20;
+            obstacle.loadTexture('explosion');
+            obstacle.animations.add('scroll');
+            obstacle.animations.play('scroll', 15, false, true);
+            console.log(player);
+            console.log(obstacle);
             clearInterval(i1);
             clearInterval(i2);
             clearInterval(i3);
