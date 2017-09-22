@@ -51,6 +51,43 @@ function randomObGrav() {
 function randomOrbGrav() {
     return Math.floor(Math.random() * (400 - 200)) + 200;
 }
+function heroHappiness() {
+    if (player.key == 'heroc' && score < 25000) {
+        player.loadTexture('heroc');
+    } else if (player.key == 'heroc' && score > 25000 && score < 75000) {
+        player.loadTexture('herochappy');
+    } else if (player.key == 'heroc' && score > 75000) {
+        player.loadTexture('herocsuper');
+    }
+    if (player.key == 'herom' && score < 25000) {
+        player.loadTexture('herom');
+    } else if (player.key == 'herom' && score > 25000 && score < 75000) {
+        player.loadTexture('heromhappy');
+    } else if (player.key == 'herom' && score > 75000) {
+        player.loadTexture('heromsuper');
+    }
+    if (player.key == 'heroy' && score < 25000) {
+        player.loadTexture('heroy');
+    } else if (player.key == 'heroy' && score > 25000 && score < 75000) {
+        player.loadTexture('heroyhappy');
+    } else if (player.key == 'heroy' && score > 75000) {
+        player.loadTexture('heroysuper');
+    }
+    if (player.key == 'herodr' && score < 25000) {
+        player.loadTexture('herodr');
+    } else if (player.key == 'herodr' && score > 25000 && score < 75000) {
+        player.loadTexture('herodrhappy');
+    } else if (player.key == 'herodr' && score > 75000) {
+        player.loadTexture('herodrsuper');
+    }
+    if (player.key == 'herosc' && score < 25000) {
+        player.loadTexture('herosc');
+    } else if (player.key == 'herosc' && score > 25000 && score < 75000) {
+        player.loadTexture('heroschappy');
+    } else if (player.key == 'herosc' && score > 75000) {
+        player.loadTexture('heroscsuper');
+    }
+}
 
 Game.prototype = {
     preload: function () {
@@ -64,10 +101,20 @@ Game.prototype = {
         game.load.image('mlane', 'assets/images/laneMalachite.png');
         game.load.image('clane', 'assets/images/laneCrimson.png');
         game.load.image('herosc', 'assets/images/heroSpaceCadet.png');
+        game.load.image('heroschappy', 'assets/images/heroSpaceCadetHappy.png');
+        game.load.image('heroscsuper', 'assets/images/heroSpaceCadetSuper.png');
         game.load.image('heroy', 'assets/images/heroYellow.png');
+        game.load.image('heroyhappy', 'assets/images/heroYellowHappy.png');
+        game.load.image('heroySuper', 'assets/images/heroYellowSuper.png');
         game.load.image('herodr', 'assets/images/heroDarkRaspberry.png');
+        game.load.image('herodrhappy', 'assets/images/heroDarkRaspberryHappy.png');
+        game.load.image('herodrsuper', 'assets/images/heroDarkRaspberrySuper.png');
         game.load.image('herom', 'assets/images/heroMalachite.png');
+        game.load.image('heromhappy', 'assets/images/heroMalachiteHappy.png');
+        game.load.image('heromsuper', 'assets/images/heroMalachiteSuper.png');
         game.load.image('heroc', 'assets/images/heroCrimson.png');
+        game.load.image('herochappy', 'assets/images/heroCrimsonHappy.png');
+        game.load.image('herocsuper', 'assets/images/heroCrimsonSuper.png');
         game.load.image('orb', 'assets/images/colorOrb.png');
         game.load.spritesheet('bomb', 'assets/images/bombs.png', 60, 60);
         game.load.spritesheet('explosion', 'assets/images/explostionSheet.png', 100, 100)
@@ -355,7 +402,7 @@ Game.prototype = {
             scoreText.text = 'Score: ' + score;
             var random = Math.floor(Math.random() * 5);
             player.loadTexture(heroCollection[random]);
-
+            
         }
         function playerKill (player, obstacle) {
 
@@ -387,49 +434,54 @@ Game.prototype = {
 
         }
         function laneCScoreModifier (player, lane) {
-            if (player.key == 'heroc') {
+            if (player.key == 'heroc' || player.key == 'herochappy' || player.key == 'herocsuper') {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 20;
+                score -= 30;
                 scoreText.text = 'Score: ' + score;
             }
+            heroHappiness();
         }
         function laneDRScoreModifier (player, lane) {
-            if (player.key == 'herodr') {
+            if (player.key == 'herodr' || player.key == 'herodrhappy' || player.key == 'herodrsuper') {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 20;
+                score -= 30;
                 scoreText.text = 'Score: ' + score;
             }
+            heroHappiness();
         }
         function laneYScoreModifier (player, lane) {
-            if (player.key == 'heroy') {
+            if (player.key == 'heroy' || player.key == 'heroyhappy' || player.key == 'heroysuper') {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 20;
+                score -= 30;
                 scoreText.text = 'Score: ' + score;
             }
+            heroHappiness();
         }
         function laneMScoreModifier (player, lane) {
-            if (player.key == 'herom') {
+            if (player.key == 'herom' || player.key == 'heromhappy' || player.key == 'heromsuper') {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 20;
+                score -= 30;
                 scoreText.text = 'Score: ' + score;
             }
+            heroHappiness();
         }
         function laneSCScoreModifier (player, lane) {
-            if (player.key == 'herosc') {
+            if (player.key == 'herosc' || player.key == 'heroschappy' || player.key == 'heroscsuper') {
                 score += 1;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 20;
+                score -= 30;
                 scoreText.text = 'Score: ' + score;
             }
+            heroHappiness();
         }
     }
 };
