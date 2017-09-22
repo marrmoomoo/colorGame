@@ -415,8 +415,6 @@ Game.prototype = {
             obstacle.loadTexture('explosion');
             obstacle.animations.add('scroll');
             obstacle.animations.play('scroll', 15, false, true);
-            console.log(player);
-            console.log(obstacle);
             clearInterval(i1);
             clearInterval(i2);
             clearInterval(i3);

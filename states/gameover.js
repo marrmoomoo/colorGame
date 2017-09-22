@@ -8,6 +8,7 @@ GameOver.prototype = {
     
     preload: function () {
         this.optionCount = 1;
+        game.load.image('gameoverb', 'assets/images/supernova.jpg');
     },
 
     addMenuOption: function(text, callback) {
@@ -37,15 +38,18 @@ GameOver.prototype = {
     },
     
     create: function () {
-        game.add.sprite(0, 0, 'gameoverbg');
+        var gos = game.add.sprite(-100, -100, 'gameoverb');
+        gos.scale.setTo(2, 2);
         name = prompt("Please enter your name");
         var titleStyle = { font: 'bold 60pt TheMinion', fill: '#FDFFB5', align: 'center'};
         var titleStyle2 = { font: 'bold 32pt TheMinion', fill: '#FDFFB5', align: 'center'};
         var text = game.add.text(game.world.centerX, 100, "Game Over", titleStyle);
-        if (name == 'null') {
-            name = 'You';
+        if (name == 'null' || name == '') {
+            name = 'Your';
+            var textS = game.add.text(120, 200, name + " Final Score: " + score, titleStyle2);
+        } else {
+            var textS = game.add.text(120, 200, name + "'s Final Score: " + score, titleStyle2);
         }
-        var textS = game.add.text(120, 200, name + "'s Final Score: " + score, titleStyle2);
         text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
         text.anchor.set(0.5);
 //        this.myInput2 = this.createInput(550, 400);
