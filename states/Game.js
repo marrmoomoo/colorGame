@@ -433,50 +433,50 @@ Game.prototype = {
         }
         function laneCScoreModifier (player, lane) {
             if (player.key == 'heroc' || player.key == 'herochappy' || player.key == 'herocsuper') {
-                score += 1;
+                score += 3;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 30;
+                score -= 31;
                 scoreText.text = 'Score: ' + score;
             }
             heroHappiness();
         }
         function laneDRScoreModifier (player, lane) {
             if (player.key == 'herodr' || player.key == 'herodrhappy' || player.key == 'herodrsuper') {
-                score += 1;
+                score += 3;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 30;
+                score -= 31;
                 scoreText.text = 'Score: ' + score;
             }
             heroHappiness();
         }
         function laneYScoreModifier (player, lane) {
             if (player.key == 'heroy' || player.key == 'heroyhappy' || player.key == 'heroysuper') {
-                score += 1;
+                score += 3;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 30;
+                score -= 31;
                 scoreText.text = 'Score: ' + score;
             }
             heroHappiness();
         }
         function laneMScoreModifier (player, lane) {
             if (player.key == 'herom' || player.key == 'heromhappy' || player.key == 'heromsuper') {
-                score += 1;
+                score += 3;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 30;
+                score -= 31;
                 scoreText.text = 'Score: ' + score;
             }
             heroHappiness();
         }
         function laneSCScoreModifier (player, lane) {
             if (player.key == 'herosc' || player.key == 'heroschappy' || player.key == 'heroscsuper') {
-                score += 1;
+                score += 3;
                 scoreText.text = 'Score: ' + score;
             } else {
-                score -= 30;
+                score -= 31;
                 scoreText.text = 'Score: ' + score;
             }
             heroHappiness();
