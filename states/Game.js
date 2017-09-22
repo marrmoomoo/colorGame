@@ -45,6 +45,12 @@ var randj2 = 1300;
 var randj3 = 2600;
 var randj4 = 800;
 var randj5 = 900;
+function randomObGrav() {
+    return Math.floor(Math.random() * (450 - 50)) + 50;
+}
+function randomOrbGrav() {
+    return Math.floor(Math.random() * (400 - 200)) + 200;
+}
 
 Game.prototype = {
     preload: function () {
@@ -159,85 +165,95 @@ Game.prototype = {
         }
         function spawnOb1() {
             var obstacle = obstacles.create(270, -350, 'bomb');
-            obstacle.body.gravity.y = 50;
+            grav = randomObGrav();
+            obstacle.body.gravity.y = grav;
             obstacle.animations.add('scroll');
             obstacle.animations.play('scroll', 15, true);
         }
         function spawnOb2() {
             var obstacle = obstacles.create(370, -250, 'bomb');
-            obstacle.body.gravity.y = 120;
+            grav = randomObGrav();
+            obstacle.body.gravity.y = grav;
             obstacle.animations.add('scroll');
             obstacle.animations.play('scroll', 15, true);
         }
         function spawnOb3() {
             var obstacle = obstacles.create(470, -350, 'bomb');
-            obstacle.body.gravity.y = 50;
+            grav = randomObGrav();
+            obstacle.body.gravity.y = grav;
             obstacle.animations.add('scroll');
             obstacle.animations.play('scroll', 15, true);
         }
         function spawnOb4() {
             var obstacle = obstacles.create(570, -250, 'bomb');
-            obstacle.body.gravity.y = 120;
+            grav = randomObGrav();
+            obstacle.body.gravity.y = grav;
             obstacle.animations.add('scroll');
             obstacle.animations.play('scroll', 15, true);
         }
         function spawnOb5() {
             var obstacle = obstacles.create(670, -450, 'bomb');
-            obstacle.body.gravity.y = 50;
+            grav = randomObGrav();
+            obstacle.body.gravity.y = grav;
             obstacle.animations.add('scroll');
             obstacle.animations.play('scroll', 15, true);
         }
         function spawnOrb1() {
             var orb = orbs.create(285, -250, 'orb');
-            orb.body.gravity.y = 300;
+            grav = randomOrbGrav();
+            orb.body.gravity.y = grav;
         }
         function spawnOrb2() {
             var orb = orbs.create(385, -250, 'orb');
-            orb.body.gravity.y = 300;
+            grav = randomOrbGrav();
+            orb.body.gravity.y = grav;
         }
         function spawnOrb3() {
             var orb = orbs.create(485, -250, 'orb');
-            orb.body.gravity.y = 300;
+            grav = randomOrbGrav();
+            orb.body.gravity.y = grav;
         }
         function spawnOrb4() {
             var orb = orbs.create(585, -250, 'orb');
-            orb.body.gravity.y = 300;
+            grav = randomOrbGrav();
+            orb.body.gravity.y = grav;
         }
         function spawnOrb5() {
             var orb = orbs.create(685, -250, 'orb');
-            orb.body.gravity.y = 300;
+            grav = randomOrbGrav();
+            orb.body.gravity.y = grav;
         }
         function randOb1Spawn() {
             spawnOb1();
-            randi1 = Math.round(Math.random()*(7000-300))+500;
+            randi1 = Math.round(Math.random()*(7000-300))+300;
             clearInterval(i1);
             i1 = setInterval(randOb1Spawn, randi1);
         }   
         i1 = setInterval(randOb1Spawn, randi1);
         function randOb2Spawn() {
             spawnOb2();
-            randi2 = Math.round(Math.random()*(9000-300))+500;
+            randi2 = Math.round(Math.random()*(4000-400))+300;
             clearInterval(i2);
             i2 = setInterval(randOb2Spawn, randi2);
         }   
         i2 = setInterval(randOb2Spawn, randi2);
         function randOb3Spawn() {
             spawnOb3();
-            randi3 = Math.round(Math.random()*(5000-200))+500;
+            randi3 = Math.round(Math.random()*(4000-1000))+1000;
             clearInterval(i3);
             i3 = setInterval(randOb3Spawn, randi3);
         }   
         i3 = setInterval(randOb3Spawn, randi3);
         function randOb4Spawn() {
             spawnOb4();
-            randi4 = Math.round(Math.random()*(11000-500))+500;
+            randi4 = Math.round(Math.random()*(3000-100))+500;
             clearInterval(i4);
             i4 = setInterval(randOb4Spawn, randi4);
         }   
         i4 = setInterval(randOb4Spawn, randi4);
         function randOb5Spawn() {
             spawnOb5();
-            randi5 = Math.round(Math.random()*(9000-200))+500;
+            randi5 = Math.round(Math.random()*(9000-200))+200;
             clearInterval(i5);
             i5 = setInterval(randOb5Spawn, randi5);
         }   
@@ -245,35 +261,35 @@ Game.prototype = {
 
         function randOrb1Spawn() {
             spawnOrb1();
-            randj1 = Math.round(Math.random()*(30000-500))+500;
+            randj1 = Math.round(Math.random()*(10000-300))+300;
             clearInterval(j1);
             j1 = setInterval(randOrb1Spawn, randj1);
         }   
         j1 = setInterval(randOrb1Spawn, randj1);
         function randOrb2Spawn() {
             spawnOrb2();
-            randj2 = Math.round(Math.random()*(30000-500))+500;
+            randj2 = Math.round(Math.random()*(20000-500))+500;
             clearInterval(j2);
             j2 = setInterval(randOrb2Spawn, randj2);
         }   
         j2 = setInterval(randOrb2Spawn, randj2);
         function randOrb3Spawn() {
             spawnOrb3();
-            randj3 = Math.round(Math.random()*(30000-500))+500;
+            randj3 = Math.round(Math.random()*(20000-500))+500;
             clearInterval(j3);
             j3 = setInterval(randOrb3Spawn, randj3);
         }   
         j3 = setInterval(randOrb3Spawn, randj3);
         function randOrb4Spawn() {
             spawnOrb4();
-            randj4 = Math.round(Math.random()*(30000-500))+500;
+            randj4 = Math.round(Math.random()*(20000-500))+500;
             clearInterval(j4);
             j4 = setInterval(randOrb4Spawn, randj4);
         }   
         j4 = setInterval(randOrb4Spawn, randj4);
         function randOrb5Spawn() {
             spawnOrb5();
-            randj5 = Math.round(Math.random()*(30000-500))+500;
+            randj5 = Math.round(Math.random()*(10000-300))+300;
             clearInterval(j5);
             j5 = setInterval(randOrb5Spawn, randj5);
         }   
@@ -346,7 +362,7 @@ Game.prototype = {
             clearInterval(j4);
             clearInterval(j5);
             spawnAllowed = false;
-            this.addMenuOption('OH NO! ->', function (e) {
+            this.addMenuOption(' OH NO! YOU SPLODED!' + '\n' + '        (CLICK ME!)', function (e) {
                 this.game.state.start("GameOver");
             });
 

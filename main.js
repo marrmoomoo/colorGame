@@ -1,5 +1,5 @@
 var
-    game = new Phaser.Game(1000, 800, Phaser.AUTO, 'game'),
+    game = new Phaser.Game(1000, 800, Phaser.CANVAS, ''),
     Main = function () {},
     gameOptions = {
         playSound: true,

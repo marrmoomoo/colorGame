@@ -42,6 +42,9 @@ GameOver.prototype = {
         var titleStyle = { font: 'bold 60pt TheMinion', fill: '#FDFFB5', align: 'center'};
         var titleStyle2 = { font: 'bold 32pt TheMinion', fill: '#FDFFB5', align: 'center'};
         var text = game.add.text(game.world.centerX, 100, "Game Over", titleStyle);
+        if (name == 'null') {
+            name = 'You';
+        }
         var textS = game.add.text(120, 200, name + "'s Final Score: " + score, titleStyle2);
         text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
         text.anchor.set(0.5);
