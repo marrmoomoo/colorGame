@@ -11,18 +11,18 @@ var orbs;
 var obstacles;
 var obstacle;
 var grav;
-    
+
 var cursors;
-    
+
 var score = 0;
 var scoreText;
 var timer;
-    
+
 var n = 2;
 var coordinates = [{x: 250}, {x: 350}, {x: 450}, {x: 550}, {x: 650}];
-    
+
 var heroCollection = ['herosc', 'heroy', 'herodr', 'herom', 'heroc'];
-    
+
 var spawnAllowed = true;
 
 var i1;
@@ -105,7 +105,7 @@ Game.prototype = {
         game.load.image('heroscsuper', 'assets/images/heroSpaceCadetSuper.png');
         game.load.image('heroy', 'assets/images/heroYellow.png');
         game.load.image('heroyhappy', 'assets/images/heroYellowHappy.png');
-        game.load.image('heroySuper', 'assets/images/heroYellowSuper.png');
+        game.load.image('heroysuper', 'assets/images/heroYellowSuper.png');
         game.load.image('herodr', 'assets/images/heroDarkRaspberry.png');
         game.load.image('herodrhappy', 'assets/images/heroDarkRaspberryHappy.png');
         game.load.image('herodrsuper', 'assets/images/heroDarkRaspberrySuper.png');
@@ -121,7 +121,7 @@ Game.prototype = {
         game.load.audio('splodesound', 'assets/bgm/Explosion.mp3');
 
     },
-    
+
     addMenuOption: function(text, callback) {
         var optionStyle = { font: '30pt TheMinion', fill: 'white', align: 'left', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
         var txt = game.add.text(game.world.centerX, (this.optionCount * 80) + 200, text, optionStyle);
@@ -148,9 +148,9 @@ Game.prototype = {
 
 
   },
-    
+
     create: function () {
-    
+
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
         bg = game.add.sprite(0, 0, 'bg');
@@ -284,35 +284,35 @@ Game.prototype = {
             randi1 = Math.round(Math.random()*(7000-300))+300;
             clearInterval(i1);
             i1 = setInterval(randOb1Spawn, randi1);
-        }   
+        }
         i1 = setInterval(randOb1Spawn, randi1);
         function randOb2Spawn() {
             spawnOb2();
             randi2 = Math.round(Math.random()*(4000-400))+300;
             clearInterval(i2);
             i2 = setInterval(randOb2Spawn, randi2);
-        }   
+        }
         i2 = setInterval(randOb2Spawn, randi2);
         function randOb3Spawn() {
             spawnOb3();
             randi3 = Math.round(Math.random()*(4000-1000))+1000;
             clearInterval(i3);
             i3 = setInterval(randOb3Spawn, randi3);
-        }   
+        }
         i3 = setInterval(randOb3Spawn, randi3);
         function randOb4Spawn() {
             spawnOb4();
             randi4 = Math.round(Math.random()*(3000-100))+500;
             clearInterval(i4);
             i4 = setInterval(randOb4Spawn, randi4);
-        }   
+        }
         i4 = setInterval(randOb4Spawn, randi4);
         function randOb5Spawn() {
             spawnOb5();
             randi5 = Math.round(Math.random()*(9000-200))+200;
             clearInterval(i5);
             i5 = setInterval(randOb5Spawn, randi5);
-        }   
+        }
         i5 = setInterval(randOb5Spawn, randi5);
 
         function randOrb1Spawn() {
@@ -320,37 +320,37 @@ Game.prototype = {
             randj1 = Math.round(Math.random()*(10000-300))+300;
             clearInterval(j1);
             j1 = setInterval(randOrb1Spawn, randj1);
-        }   
+        }
         j1 = setInterval(randOrb1Spawn, randj1);
         function randOrb2Spawn() {
             spawnOrb2();
             randj2 = Math.round(Math.random()*(20000-500))+500;
             clearInterval(j2);
             j2 = setInterval(randOrb2Spawn, randj2);
-        }   
+        }
         j2 = setInterval(randOrb2Spawn, randj2);
         function randOrb3Spawn() {
             spawnOrb3();
             randj3 = Math.round(Math.random()*(20000-500))+500;
             clearInterval(j3);
             j3 = setInterval(randOrb3Spawn, randj3);
-        }   
+        }
         j3 = setInterval(randOrb3Spawn, randj3);
         function randOrb4Spawn() {
             spawnOrb4();
             randj4 = Math.round(Math.random()*(20000-500))+500;
             clearInterval(j4);
             j4 = setInterval(randOrb4Spawn, randj4);
-        }   
+        }
         j4 = setInterval(randOrb4Spawn, randj4);
         function randOrb5Spawn() {
             spawnOrb5();
             randj5 = Math.round(Math.random()*(10000-300))+300;
             clearInterval(j5);
             j5 = setInterval(randOrb5Spawn, randj5);
-        }   
+        }
         j5 = setInterval(randOrb5Spawn, randj5);
-        
+
 //        function killSpawn() {
 //            if (player.key == 'orb') {
 //                clearInterval(i1);
@@ -365,20 +365,20 @@ Game.prototype = {
 //                clearInterval(j5);
 //            }
 //        }
-        
+
         this.stage.disableVisibilityChange = false;
-        
+
 //        if (player.kill()) {
 //            this.addMenuOption('Next ->', function (e) {
 //                this.game.state.start("GameOver");
 //            });
 //        }
 
-    },    
-    
+    },
+
     update: function () {
-    
-    
+
+
         game.physics.arcade.overlap(player, orbs, collectOrb, null, this);
 
         game.physics.arcade.overlap(player, obstacles, playerKill, null, this);
@@ -402,7 +402,7 @@ Game.prototype = {
             scoreText.text = 'Score: ' + score;
             var random = Math.floor(Math.random() * 5);
             player.loadTexture(heroCollection[random]);
-            
+
         }
         function playerKill (player, obstacle) {
 
